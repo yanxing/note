@@ -28,3 +28,5 @@ sleep没有释放锁，而wait方法释放了锁。<p>
 运行状态时，对于一个类，能够知道任意属性和方法，通过对象可以调用任意方法，这种动态获取信息和调用方法的功能称为Java的反射机制。开源框架SSH用的比较多，例如action的实例创建、setter注入和注解。<p>
 6.weak/soft/strong引用的区别？<br>
 strong是Java默认引用方式，没有对象指向时GC回收。Soft是JVM内存不足时会被GC回收。Weak当所引用的对象在JVM内不再有强引用时会被GC回收。<p>
+7.Object的hashCode()与equals()的区别和作用?<br>
+equals判断是两个对象是否相同，比较是地址，如果是String对象比较，比较的是对象内容。hashCode默认是对象内部地址转换成的一个整数，一般用在集合，不由用户调用，加入集合时先判断hashCode，再判断equals。
