@@ -23,16 +23,15 @@
 3.枚举的特点及使用场景？<br>
 枚举可以代替一组常量，比如一周天数、一年四季，使用一组int型常量会类型不安全。String类型打印时会有性能问题，另外可读性没有enum好。<p>
 4.线程sleep和wait的区别？<br>
-sleep没有释放锁，而wait方法释放了锁。<p>
+`sleep`没有释放锁，而`wait`方法释放了锁。<p>
 5.JAVA反射机制？<br>
 运行状态时，对于一个类，能够知道任意属性和方法，通过对象可以调用任意方法，这种动态获取信息和调用方法的功能称为Java的反射机制。开源框架SSH用的比较多，例如action的实例创建、setter注入和注解。<p>
 6.weak/soft/strong引用的区别？<br>
-strong是Java默认引用方式，没有对象指向时GC回收。Soft是JVM内存不足时会被GC回收。Weak当所引用的对象在JVM内不再有强引用时会被GC回收。<p>
+`strong`是Java默认引用方式，没有对象指向时GC回收。`Soft`是JVM内存不足时会被GC回收。`Weak`当所引用的对象在JVM内不再有强引用时会被GC回收。<p>
 7.Object的hashCode()与equals()的区别和作用?<br>
-equals判断是两个对象是否相同，比较是地址，如果是String对象比较，比较的是对象内容。hashCode默认是对象内部地址转换成的一个整数，一般用在集合，不由用户调用，加入集合时先判断hashCode，再判断equals。
+`equals`判断是两个对象是否相同，比较是地址，如果是String对象比较，比较的是对象内容。`hashCode`默认是对象内部地址转换成的一个整数，一般用在集合，不由用户调用，加入集合时先判断`hashCode`，再判断`equals`。
 ###1.2 集合类
 JAVA常用集合类功能、区别和性能？<br>
-List元素可重复。<br>
-`ArrayList` 查询效果高，增删慢,线程不安全。`Vector`开销大，多用于查询,线程安全。`LinkedList` 增删快，查询慢,线程不安全。<br>
+List元素可重复。`ArrayList` 查询效果高，增删慢,线程不安全。`Vector`开销大，多用于查询,线程安全。`LinkedList` 增删快，查询慢,线程不安全。<br>
 Map键值对，唯一键。`HashMap`线程不安全。`TreeMap`排序功能，元素需要实现Comparable接口，线程不安全。`HashTable`线程安全。<br>
 Set唯一元素。`HashSet`通过HashMap实现的。`TreeSet`唯一元素，通过HashMap实现的。<br>
