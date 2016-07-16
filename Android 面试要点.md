@@ -37,3 +37,6 @@ List元素可重复，有放入顺序。`ArrayList` 查询效果高，增删慢,
 `Vector`、`HashTable`、`ConcurrentHashMap`、`CopyOnWriteArrayList`,后两个实现了更高的并发性。<p>
 3.部分常用集合类的内部实现方式<br>
 `ArrayList`使用数组保存所有元素；`LinkedList`使用双向链表；`HashMap`哈希表，其哈希表实现方式数组和链表。
+###1.3 多线程相关
+1.Thread、Runnable、Callable、Futrue类关系与区别？<br>
+jdk1.5之前实现多线程有两种方式，一种继承`Thread`重写run方法；一种实现`Runnable`接口，实现run方法，作为`Thread`的构造方法参数，来启动线程。它们的run方法没有返回值并不能抛出异常。之后加了`Callable`这个接口来实现多线程。`Callable`中定义了call方法，有返回值，可抛出异常，`Future`可以拿到这个返回值，并可以对`Callable`取消操作。
