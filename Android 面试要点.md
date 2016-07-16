@@ -46,4 +46,4 @@ JDK1.5之前实现多线程有两种方式，一种继承`Thread`重写run方法
 用`synchronized`修饰方法或者代码块；使用特殊域变量`volatile`实现线程同步，修饰变量；使用`ReentrantLock`类,操作时获取锁（`lock`方法），操作完释放（`unlock`方法）；`ThreadLocal`管理变量，每一个线程都有该变量副本；使用`wait`释放锁，`notify`/`notifyAll`唤醒等待线程，需要和关键字synchronized一起使用。<p>
 4.在理解默认线程池的前提下，自己实现线程池？<br>
 以前写过压缩一个目录路径下所有文件的代码，自己写了一个线程池。大概思路：默认四个线程，while循环直到文件压缩完，4个线程才停止。
-[代码]()
+[代码](https://github.com/yanxing/note/tree/master/%E4%BB%A3%E7%A0%811)
