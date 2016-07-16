@@ -36,4 +36,4 @@ List元素可重复，有放入顺序。`ArrayList` 查询效果高，增删慢,
 2.并发相关的集合类？<br>
 `Vector`、`HashTable`、`ConcurrentHashMap`、`CopyOnWriteArrayList`,后两个实现了更高的并发性。<p>
 3.部分常用集合类的内部实现方式<br>
-`ArrayList`实现了List接口、底层使用数组保存所有元素；`LinkedList`双向链表；`HashMap`哈希表，其哈希表实现方式数组和链表。
+`ArrayList`使用数组保存所有元素；`LinkedList`使用双向链表；`HashMap`哈希表，其哈希表实现方式数组和链表。
