@@ -31,5 +31,7 @@
 7.Object的hashCode()与equals()的区别和作用?<br>
 `equals`判断是两个对象是否相同，比较是地址，如果是String对象比较，比较的是对象内容。`hashCode`默认是对象内部地址转换成的一个整数，一般用在集合，不由用户调用，加入集合时先判断`hashCode`，再判断`equals`。
 ###1.2 集合类
-JAVA常用集合类功能、区别和性能？<br>
-List元素可重复。`ArrayList` 查询效果高，增删慢,线程不安全。`Vector`开销大，多用于查询,线程安全。`LinkedList` 增删快，查询慢,线程不安全;Map键值对，唯一键。`HashMap`线程不安全。`TreeMap`排序功能，元素需要实现Comparable接口，线程不安全。`HashTable`线程安全;Set唯一元素。`HashSet`通过HashMap实现的。`TreeSet`唯一元素，通过HashMap实现的。<br>
+1.JAVA常用集合类功能、区别和性能？<br>
+List元素可重复。`ArrayList` 查询效果高，增删慢,线程不安全。`Vector`开销大，多用于查询,线程安全。`LinkedList` 增删快，查询慢,线程不安全；Map键值对，唯一键。`HashMap`线程不安全。`TreeMap`排序功能，元素需要实现Comparable接口，线程不安全。`HashTable`线程安全,`ConcurrentHashMap`线程安全，较HashTable效率高；Set唯一元素。`HashSet`通过HashMap实现的。`TreeSet`唯一元素，通过HashMap实现的。<br>
+2.并发相关的集合类？<br>
+`Vector`、`HashTable`、`ConcurrentHashMap`、`CopyOnWriteArrayList`,后两个实现了更高的并发性。
