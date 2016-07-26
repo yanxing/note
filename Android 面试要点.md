@@ -60,4 +60,5 @@ Java里面使用正则表达式需要用到Pattern和Matcher两个类，用到�
 1.注解的使用？<br>
 2.注解的级别及意义？<br>
 3.如何自定义注解？<br>
-三个问题放在一起说。
+三个问题放在一起说。注解是为类、方法、变量等添加的说明、注释。可以用来生成文档、减少配置文件（例如spring、springmvc注解配置可以减少xml中bean和control的配置）、在编译时进行格式检查。自定义注解需要用Java提供的元注解来注解：@Target：用于描述注解的使用范围，包括ElementType.CONSTRUCTOR（构造器声明）、ElementType.FIELD（域声明，包括enum实例）、ElementType.LOCAL_VARIABLE（局部变量声明 ）、ElementType.METHOD（方法声明 ）、 ElementType.PACKAGE（包声明）、 ElementType.PARAMETER（参数声明 ）、ElementType.TYPE（类，接口，包括注解类型或enum声明）；@Retention：表示在什么级别保存该注解信息，包括： RetentionPolicy.SOURCE（注解将被编译器丢弃）、RetentionPolicy.CLASS（注解在class文件中可用，但会被VM丢弃）、RetentionPolicy.RUNTIME（VM将在运行期也保留注释，因此可以通过反射机制读取注解的信息）; @Document：将此注解包含在javadoc中; @Inherited：允许子类继承父类中的注解。注解的解析完全依赖于反射，一般平时编程不需要自己写注解，除非写框架，减少配置时。
+
