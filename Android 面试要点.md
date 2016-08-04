@@ -65,3 +65,4 @@ Java里面使用正则表达式需要用到Pattern和Matcher两个类，用到�
 ###2.1 Android基础<br>
 1.四大组件的意义及使用，生命周期回调及意义<br>
 `Activity`是一个单独的屏幕（窗口），可以显示一些控件，需要在AndroidManifest.xml中声明，生命周期主要依次为：onCreate、onRestart(回退到`Activity`时调用)、onStart、onResume、onPause、onStop、onDestroy。启动Activity会先调用onCreate方法，然后调用onStart方法，最后调用onResume，`Activity`进入运行状态；跳转到其他Activity，或按下Home键，会先调用onPause,再调用onStop(如果跳转的`Activity`的主题是透明的，onStop不会调用)；锁屏调用onPause和onStop;按返回键，调用onPause、onStop和onDestroy。<br>
+`BroadcastReceive`广播在android中是一种用在应用程序内部或之间传递消息的机制，分为普通广播和有序广播，广播接收器注册方式分为静态注册和动态注册。静态注册生命周期随着应用程序进程销毁er销毁，动态注册随着当前Activity销毁而销毁。广播接受者需要在10S内处理完逻辑，否则报ANR。<br>
