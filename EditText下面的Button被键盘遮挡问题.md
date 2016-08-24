@@ -5,4 +5,4 @@ View的onsizechanged方法会被调用，可在里面移动布局使键盘不遮
 当使用沉浸式通知栏时，布局文件中根节点没有加android:fitsSystemWindows="true"，
 窗口不会调整大小，即布局不变；而子节点中有android:fitsSystemWindows="true"属性时
 布局会出现一片空白（颜色为使用了fitsSystemWindows属性的View的背景颜色），看不到其他View，
-加不加都会影响通知栏着色（通知栏颜色不能和标题栏颜色一致）。
+加不加都会影响通知栏着色（通知栏颜色不能和标题栏颜色一致）。[代码](https://github.com/yanxing/android-util/blob/master/app/src/main/java/com/yanxing/ui/InputEditButtonActivity.java)
