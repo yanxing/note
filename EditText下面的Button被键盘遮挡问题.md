@@ -1,0 +1,9 @@
+`adjustPan`：Activity主窗口并不调整屏幕的大小以便留出软键盘的空间，会移动View内容；
+`adjustResize`：Activity主窗口总是被调整屏幕的大小以便留出软键盘的空间。但是两个属性具体表现形式又与是否使用沉浸式通知栏和布局是否
+使用了fitsSystemWindows等有关<br>
+本问题中如果Activity使用`adjustPan`，EditText可见，但是其下面的Button被键盘遮住，View也不会调用onsizechanged方法。所以需要使用`adjustResize`，
+View的onsizechanged方法会被调用，可在里面移动布局使键盘不遮挡Button，也可以监听EditText触摸时间移动，这里关键的一步是延迟移动。
+当使用沉浸式通知栏时，布局文件中根节点没有加android:fitsSystemWindows="true"，
+窗口不会调整大小，即布局不变；而子节点中有android:fitsSystemWindows="true"属性时
+布局会出现一片空白（颜色为使用了fitsSystemWindows属性的View的背景颜色），看不到其他View，
+加不加都会影响通知栏着色（通知栏颜色不能和标题栏颜色一致）。
