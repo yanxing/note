@@ -52,7 +52,7 @@ JDK1.5之前实现多线程有两种方式，一种继承`Thread`重写run方法
 `String`类及其变量`final`修饰，不可变。不可变主要从下面几点考虑：字符串常量池的需要,当创建一个`String`对象时,假如此字符串值已经存在于常量池中,则不会创建一个新的对象,而是引用已经存在的对象；允许`String`对象缓存`HashCode`，Java中`String`对象的哈希码被频繁地使用,不可变保证`hashcode`唯一性，可以对其缓存，有利于性能提高；出于安全性考虑，字符串经常作为网络连接、数据库连接等参数，不可变可以保证连接的安全性。<p>
 2.StringBuilder和StringBuffer的区别？<br>
 由于String是不可变得，不适合频繁字符串操作，`StringBuilder`和`StringBuffer`字符串变量，适合频繁字符串操作，`StringBuilder`线程非安全，`StringBuffer`线程安全，速度弱于`StringBuilder`。<p>
-3.StringBuilder和StringBuffer的区别？<br>
+3.字符集的理解：Unicode、UTF-8、GB2312等？<br>
 `Unicode`为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求；`UTF-8`编码是一种目前广泛应用于网页的编码,以满足同一页面显示中文简体繁体及其它语言；`GB2312`编码适用于汉字处理、汉字通信等系统之间的信息交换。<p>
 4.正则表达式相关问题？<br>
 Java里面使用正则表达式需要用到Pattern和Matcher两个类，用到正则表达式时，我基本都是网上搜来，改下，需要注意转义字符。<p>
@@ -78,5 +78,5 @@ Java里面使用正则表达式需要用到Pattern和Matcher两个类，用到�
 Linux内核层（Linux Kernel）：Android依赖于Linux2.6内核提供的核心系统服务，例如安全、内存管理、进程管理、网络栈、驱动模块等，Android对内核进行了增强，增加了一些显示、输入设备、摄像头、WIFI等驱动。<Br>
 4.AsyncTask的实现方式<br>
 `AsyncTask`封装了Thread和Handler，是一个抽象泛型类，提供了Params、Progress和Result这三个泛型参数，其中Params表示参数的类型，Progress表示后台任务执行进度的类型，Result表示后台任务返回结果的类型，如果不需要传递具体参数，三个泛型可以用Void代替。`AsyncTask`提供了四个核心方法：onPreExecute()主线程中执行，一般做开始前的准备工作；doInBackground(Params...params)执行异步任务，params参数表示异步任务的输入参数；onProgressUpdate(Progress...Values)主线程中执行，后台任务执行进度改变时此方法被调用；onPostExecute(Result result)主线程中执行，result参数表示doInBackground的返回值。当异步任务取消时，onCanceled()方法会被调用，此时onPostExecute方法不会被调用。<br>
-5.AsyncTask使用的时候应该注意什么?<br>
+5.AsyncTask使用的时候应该注意什么？<br>
 `AsyncTask`对象须要在主线程创建，execute方法在主线程中调用，一个对象只能执行execute方法一次,doInBackground方法不能直接操作UI。不需要自己调用问题4中的那四个核心方法。<br>
