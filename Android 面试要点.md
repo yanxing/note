@@ -39,7 +39,7 @@ List元素可重复，有放入顺序。`ArrayList` 查询效果高，增删慢,
 `ArrayList`使用数组保存所有元素；`LinkedList`使用双向链表；`HashMap`哈希表，其哈希表实现方式数组和链表。
 ###1.3 多线程相关
 1.Thread、Runnable、Callable、Futrue类关系与区别？<br>
-JDK1.5之前实现多线程有两种方式，一种继承`Thread`重写run方法；一种实现`Runnable`接口，实现run方法，作为`Thread`的构造方法参数，来启动线程。它们的run方法没有返回值并不能抛出异常。之后加了`Callable`这个接口来实现多线程。`Callable`中定义了call方法，有返回值，可抛出异常，`Future`可以拿到这个返回值，并可以对`Callable`取消操作。<p>
+JDK1.5之前实现多线程有两种方式，一种继承`Thread`重写run方法；一种实现`Runnable`接口，实现run方法，作为`Thread`的构造方法参数，来启动线程。它们的run方法没有返回值并不能抛出异常。之后加了`Callable`这个接口来实现多线程。`Callable`中定义了call方法，有返回值，可抛出异常，`Future`可以拿到这个返回值，并可以执行取消操作。<p>
 2.JDK中默认提供了哪些线程池，有何区别?<br>
 `Executors.newFixedThreadPool`创建一个指定工作线程数量的线程池。每当提交一个任务就创建一个工作线程，如果工作线程数量达到线程池初始的最大数，则将提交的任务存入到池队列中，这样可以节省线程创建开销，但空闲时，不会释放工作线程；`Executors.newCachedThreadPool`创建一个可缓存的线程池，创建的数量几乎没有限制，如果长时间线程池空闲，会自动终止，再提交任务，会重新创建一个工作线程，有一定的系统开销；`Executors.newSingleThreadExecutor`只创建唯一的工作线程来执行任务；`Executors.newScheduleThreadPool`创建给定延迟后运行命令或者定期地执行<p>
 3.线程同步有几种方式，分别阐述在项目中的用法？<br>
@@ -69,10 +69,14 @@ Java里面使用正则表达式需要用到Pattern和Matcher两个类，用到�
 `Service`没有UI界面，运行在后台。启动`Service`有两种：startService和bindService，startService方式启动的`Service`生命周期依次为onCreate->onStartCommand->onDestroy，如果没有调用stopService，Service会一直在后台运行，多次启动`Service`，onCreate方法不会多次执行，onStartCommand会多次调用。bindService启动的`Service`生命周期依次为onCreate->onBind->onUnBind->onDestroy，它会随着Activity销毁而销毁，多次启动，onCreate和onBind方法并不会多次执行。<br>
 `contentProvider`为存储和获取数据提供统一的接口，可以在不同的应用程序之间共享数据，其他应用可以通过`ContentProvider`对你应用中的数据进行添删改查。<br>
 2.AsyncTask、Handler的使用<br>
-`AsyncTask`是android提供的轻量级的异步类，最少要重写两个方法doInBackground和onPostExecute，前者做耗时操作，位于后台线程中，后者更新UI，`AsyncTask`在主线程中调用，一个对象只能执行execute方法一次。`Handler`主要接受子线程发送的数据， 并用此数据更新UI，接受消息必须重写handleMessage方法，并在此方法中更新UI。<br>
+`AsyncTask`是android提供的轻量级的异步类，最少要重写两个方法doInBackground和onPostExecute，前者做耗时操作，位于后台线程中，后者更新UI。`Handler`主要接受子线程发送的数据， 并用此数据更新UI，接受消息必须重写handleMessage方法，并在此方法中更新UI。<br>
 3.Android系统层次框架结构<br>
 分为四层：应用程序层（Applications）、应用程序框架层（Application Framework）、系统运行库层（Libraries和Android Runtime）和Linux内核层（Linux Kernel）。<br>
 应用程序层（Applications）：所有的应用程序都是使用java语言编写的，核心应用的编写必须使用应用层序框架层（Application Framework）的API框架。<br>
 应用程序框架层（Application Framework）：开发时所需要的API框架，开发人员是在遵守该框架的原则上，开发自己所需要的程序。<br>
 系统运行库层（Libraries和Android Runtime）：用于支持应用框架层的各个组件的。就是说当开发人员使用android应用框架层（Application Framework）时，android系统会通过一些C/C++库来支持对我们使用的各个组件，使其能更好地为开发者服务。<br>
 Linux内核层（Linux Kernel）：Android依赖于Linux2.6内核提供的核心系统服务，例如安全、内存管理、进程管理、网络栈、驱动模块等，Android对内核进行了增强，增加了一些显示、输入设备、摄像头、WIFI等驱动。<Br>
+4.AsyncTask的实现方式<br>
+`AsyncTask`封装了Thread和Handler，是一个抽象泛型类，提供了Params、Progress和Result这三个泛型参数，其中Params表示参数的类型，Progress表示后台任务执行进度的类型，Result表示后台任务返回结果的类型，如果不需要传递具体参数，三个泛型可以用Void代替。`AsyncTask`提供了四个核心方法：onPreExecute()主线程中执行，一般做开始前的准备工作；doInBackground(Params...params)执行异步任务，params参数表示异步任务的输入参数；onProgressUpdate(Progress...Values)主线程中执行，后台任务执行进度改变时此方法被调用；onPostExecute(Result result)主线程中执行，result参数表示doInBackground的返回值。当异步任务取消时，onCanceled()方法会被调用，此时onPostExecute方法不会被调用。<br>
+5.AsyncTask使用的时候应该注意什么?<br>
+`AsyncTask`对象须要在主线程创建，execute方法在主线程中调用，一个对象只能执行execute方法一次,doInBackground方法不能直接操作UI。不需要自己调用问题4中的那四个核心方法。<br>
