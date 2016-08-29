@@ -67,4 +67,12 @@ Java里面使用正则表达式需要用到Pattern和Matcher两个类，用到�
 `Activity`是一个单独的屏幕（窗口），可以显示一些控件，需要在AndroidManifest.xml中声明，生命周期主要依次为：onCreate、onRestart(回退到`Activity`时调用)、onStart、onResume、onPause、onStop、onDestroy。启动Activity会先调用onCreate方法，然后调用onStart方法，最后调用onResume，`Activity`进入运行状态；跳转到其他Activity，或按下Home键，会先调用onPause,再调用onStop(如果跳转的`Activity`的主题是透明的，onStop不会调用)；锁屏调用onPause和onStop;按返回键，调用onPause、onStop和onDestroy。<br>
 `BroadcastReceive`广播在android中是一种用在应用程序内部或之间传递消息的机制，分为普通广播和有序广播，广播接收器注册方式分为静态注册和动态注册。静态注册生命周期随着应用程序进程销毁er销毁，动态注册随着当前Activity销毁而销毁。广播接受者需要在10S内处理完逻辑，否则报ANR。<br>
 `Service`没有UI界面，运行在后台。启动`Service`有两种：startService和bindService，startService方式启动的`Service`生命周期依次为onCreate->onStartCommand->onDestroy，如果没有调用stopService，Service会一直在后台运行，多次启动`Service`，onCreate方法不会多次执行，onStartCommand会多次调用。bindService启动的`Service`生命周期依次为onCreate->onBind->onUnBind->onDestroy，它会随着Activity销毁而销毁，多次启动，onCreate和onBind方法并不会多次执行。<br>
-`contentProvider`为存储和获取数据提供统一的接口，可以在不同的应用程序之间共享数据。
+`contentProvider`为存储和获取数据提供统一的接口，可以在不同的应用程序之间共享数据，其他应用可以通过`ContentProvider`对你应用中的数据进行添删改查。<br>
+2.AsyncTask、Handler的使用<br>
+`AsyncTask`是android提供的轻量级的异步类，最少要重写两个方法doInBackground和onPostExecute，前者做耗时操作，位于后台线程中，后者更新UI，`AsyncTask`在主线程中调用，一个对象只能执行execute方法一次。`Handler`主要接受子线程发送的数据， 并用此数据更新UI，接受消息必须重写handleMessage方法，并在此方法中更新UI。<br>
+3.Android系统层次框架结构<br>
+分为四层：应用程序层（Applications）、应用程序框架层（Application Framework）、系统运行库层（Libraries和Android Runtime）和Linux内核层（Linux Kernel）。<br>
+应用程序层（Applications）：所有的应用程序都是使用java语言编写的，核心应用的编写必须使用应用层序框架层（Application Framework）的API框架。<br>
+应用程序框架层（Application Framework）：开发时所需要的API框架，开发人员是在遵守该框架的原则上，开发自己所需要的程序。<br>
+系统运行库层（Libraries和Android Runtime）：用于支持应用框架层的各个组件的。就是说当开发人员使用android应用框架层（Application Framework）时，android系统会通过一些C/C++库来支持对我们使用的各个组件，使其能更好地为开发者服务。<br>
+Linux内核层（Linux Kernel）：Android依赖于Linux2.6内核提供的核心系统服务，例如安全、内存管理、进程管理、网络栈、驱动模块等，Android对内核进行了增强，增加了一些显示、输入设备、摄像头、WIFI等驱动。<Br>
