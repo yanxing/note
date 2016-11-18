@@ -28,7 +28,7 @@ dp和dip一个意思，密度无关像素，在Android中，规定以160dp为基
 ，放在xxdpi里面，对于可能造成拉伸的图片，采用.9图片。
 ####3.layout和values
 多使用相对布局RelativeLayout,少使用绝对布局，充分利用”wrap_content” 、”match_parent”以及“weight”。采用一套layout,多套values(特殊地方可以多套layout)，
-命名规则比如values-1900x1080（通知栏假设为20，减去通知栏）。<p>
+命名规则比如values-1900x1080（通知栏假设为20px，减去通知栏）。<p>
 参考资料：<br>
 http://blog.csdn.net/mynameishuangshuai/article/details/52925848#t21<br>
 http://zmywly8866.github.io/2015/03/04/android-multi-resolution-adaptation.html<br>
