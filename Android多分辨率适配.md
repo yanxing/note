@@ -21,11 +21,11 @@ dp和dip一个意思，密度无关像素，在Android中，规定以160dp为基
       return (int) (px / scale + 0.5f;
   }
   ```
-####2.mdpi、hdpi、xdpi、xxdpi、xxxdpi
+####2.mdpi、hdpi、xhdpi、xxhdpi、xxxhdpi
 用来修饰Android中的drawable(mipmap)文件夹及values文件夹，用来区分不同像素密度下的图片和dimen值。
 ![image](https://github.com/yanxing/note/raw/master/image/1.png)![image](https://github.com/yanxing/note/raw/master/image/2.png)
 <br>为了减少UI的工作量，只提供一套图,为了在各种分辨率下图片不失真，按照最高分辨率（主流1080p）提供图片，根据现在手机市场状况（主流像素密度在320dp-480dp）
-，放在xxdpi里面，对于可能造成拉伸的图片，采用.9图片。
+，放在xxhdpi里面，对于可能造成拉伸的图片，采用.9图片（注：xhdpi为720p，xxhdpi为1080p）。
 ####3.layout和values
 多使用相对布局RelativeLayout,少使用绝对布局，充分利用”wrap_content” 、”match_parent”以及“weight”。采用一套layout,多套values(特殊地方可以多套layout)，
 命名规则比如values-xhdpi、values-xxhdpi，也可以采用values-1900x1080（通知栏假设为20px，减去通知栏），本人采用的是前者。<p>
