@@ -1,0 +1,2 @@
+在Activity的onCreate方法中添加Fragment时的生命周期，Activity:onCreate->onStart 接着Fragment调用onAttach->onCreate->onCreateView->onViewCreated->onActivityCreated->onStart 然后Activity接着调用
+onResume，最后Fragment调用onResume方法。
