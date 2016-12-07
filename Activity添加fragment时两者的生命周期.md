@@ -1,13 +1,7 @@
 在Activity的onCreate方法中添加Fragment时的生命周期，Activity:<br>
-onCreate<p>
-onStart <p>
+onCreate->onStart <p>
 接着Fragment调用<br>
-onAttach<p>
-onCreate<p>
-onCreateView<p>
-onViewCreated<p>
-onActivityCreated<p>
-onStart<p>
+onAttach->onCreate->onCreateView->onViewCreated->onActivityCreated->onStart<p>
 然后Activity接着调用<br>
 onResume<p>
 最后Fragment调用<p>
