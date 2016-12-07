@@ -2,11 +2,11 @@
 onCreate<p>
 onStart <p>
 接着Fragment调用<br>
-onAttach-><p>
-onCreate-><p>
-onCreateView-><p>
-onViewCreated-><p>
-onActivityCreated-><p>
+onAttach<p>
+onCreate<p>
+onCreateView<p>
+onViewCreated<p>
+onActivityCreated<p>
 onStart<p>
 然后Activity接着调用<br>
 onResume<p>
