@@ -4,5 +4,5 @@ onCreate->onStart <p>
 onAttach->onCreate->onCreateView->onViewCreated->onActivityCreated->onStart<p>
 然后Activity接着调用<br>
 onResume<p>
-最后Fragment调用<p>
+最后Fragment调用<br>
 onResume
