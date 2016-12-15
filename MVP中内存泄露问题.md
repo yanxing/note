@@ -1,1 +1,1 @@
-Presenter会持有Activity,退出Activity时，如果Presenter有异步任务，可能会导致内存泄露，所以在Presenter中加入一个销毁view的方法，这时需要注意Presenter中的异步任务回调时（回调在主线程）再操作view会报空指针，如果用的是RxJava可以取消订阅（不会发生回调），然后再调用销毁view的方法。
+Presenter会持有Activity,退出Activity时，如果Presenter有异步任务，可能会导致内存泄露，所以在Presenter中加入一个销毁view的方法，这时需要注意Presenter中的异步任务回调时（回调在主线程）再操作view会报空指针，如果用的是RxJava可以取消订阅（不会发生回调），然后再调用销毁view的方法。[例子](https://github.com/yanxing/android-mvp)
