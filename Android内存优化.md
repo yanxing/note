@@ -11,3 +11,7 @@ inJustDecodeBounds为true表示不为Bitmap分配内存空间，但是可以获�
 如果控件使用static修饰或者静态的资源对象，就会持有Activity，导致内存泄露。<p>
 4.资源未关闭<br>
 使用BraodcastReceiver，Cursor，InputStream/OutputStream等未关闭。<p>
+
+其他内存优化<br>
+常量使用static final，少使用枚举；String变量拼接使用StringBuild（线程不安全，StringBuffer线程安全）；ViewPager+Fragment不缓存过多的Fragment，考虑到性能和节省流量，可延迟请求网络；
+不要在Application放过多的全局变量；HashMap若是int型的key，可以使用SparseArray代替，其他类型使用ArrayMap；ListView适配器getView中复用View，不用每次inflate（现在基本都用RecycleView，其适配器实现了复用）；考虑到性能，布局减少不必要的层次，打开GPU过度绘制调试，大部分布局维持在1x-2x范围内比较好，根据现在的旗舰手机配置，3x、4x也行，结合需求，尽量向2x靠齐(一般app大部分界面设计都是偏向2x，1x,3x占比少)。
