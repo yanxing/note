@@ -1,3 +1,3 @@
-1.Bitmap是内存大户，容易造成OOM，列表项图片应该用缩略图，BitmapFactory.Options的inSampleSize属性表示图片为原始图片的几分之几，
+1.Bitmap是内存大户，容易造成OOM，可以对图片进行压缩，BitmapFactory.Options的inSampleSize属性表示图片为原始图片的几分之几，
 inJustDecodeBounds为true表示不为Bitmap分配内存空间，但是可以获得图片宽高，这样可以动态设置inSampleSize的值，用过bitmap后及时
-调用recycle()方法释放空间，图片加载开源框架UniversalImageLoader和Fresco都很优秀，可以直接用这两个（有资料显示Fresco内存处理的很好）
+调用recycle()方法释放空间。另外可以使用图片加载开源框架Fresco，相较于UniversalImageLoader速度更快，内存使用优化的更好，支持gif和WebP。
