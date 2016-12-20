@@ -4,7 +4,7 @@ inJustDecodeBounds为true表示不为Bitmap分配内存空间，但是可以获�
 调用recycle()方法释放空间。另外可以使用图片加载开源框架Fresco，相较于UniversalImageLoader速度更快，内存使用优化的更好，支持GIF和WebP。<p>
 ####内存泄露
 1.使用线程<br>
-当使用线程做耗时任务时，如果线程匿名内部类，会持有外部Activity，导致Activity不能回收，所以在onDestory中应该停止线程任务。Handler处理消息时需使用静态类，结合弱引用更新UI。<p>
+当使用线程做耗时任务时，如果线程是匿名内部类，会持有外部Activity，导致Activity不能回收，另外在onDestory中应该停止线程任务。Handler处理消息时需使用静态类，结合弱引用更新UI。<p>
 2.使用单例<br>
 由于单例的生命周期比较长，上下文context不应使用Activity的，应该使用Application的context。<p>
 3.使用静态成员变量<br>
