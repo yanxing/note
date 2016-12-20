@@ -1,3 +1,13 @@
-1.Bitmap是内存大户，容易造成OOM，可以对图片进行压缩，BitmapFactory.Options的inSampleSize属性表示图片为原始图片的几分之几，
+###内存溢出
+Bitmap是内存大户，容易造成OOM，可以对图片进行压缩，BitmapFactory.Options的inSampleSize属性表示图片为原始图片的几分之几，
 inJustDecodeBounds为true表示不为Bitmap分配内存空间，但是可以获得图片宽高，这样可以动态设置inSampleSize的值，用过bitmap后及时
-调用recycle()方法释放空间。另外可以使用图片加载开源框架Fresco，相较于UniversalImageLoader速度更快，内存使用优化的更好，支持gif和WebP。
+调用recycle()方法释放空间。另外可以使用图片加载开源框架Fresco，相较于UniversalImageLoader速度更快，内存使用优化的更好，支持GIF和WebP。<p>
+###内存泄露。
+1. 使用线程<br>
+当使用线程做耗时任务时，如果线程匿名内部类，会持有外部Activity，导致Activity不能回收，所以在onDestory中应该停止线程任务。Handler处理消息时需使用静态类，结合弱引用更新UI。
+2. 使用单例<br>
+由于单例的生命周期比较长，上下文context不应使用Activity的，应该使用Application的context。
+3. 使用静态成员变量<br>
+如果控件使用static修饰或者静态的资源对象，就会持有Activity，导致内存泄露。
+4. 资源未关闭<br>
+使用BraodcastReceiver，Cursor，InputStream/OutputStream等未关闭。
