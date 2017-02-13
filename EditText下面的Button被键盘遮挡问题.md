@@ -6,7 +6,7 @@ View的onsizechanged方法会被调用，可以在onsizechanged方法里面移�
 窗口不会调整大小，即布局不变；而子节点中有android:fitsSystemWindows="true"属性时
 布局会出现一片空白（颜色为使用了fitsSystemWindows属性的View的背景颜色），看不到其他View，
 加不加都会影响通知栏着色（通知栏颜色不能和标题栏颜色一致）。[代码](https://github.com/yanxing/android-util/blob/master/app/src/main/java/com/yanxing/ui/InputEditButtonActivity.java)
-<p>备注：在一个项目中看到，只需要把Button放到ScrollView外面（层级并列），也可以实现这个效果，不用写代码移动布局。
+<p>备注：在一个项目中看到，只需要把Button放到ScrollView外面（层级并列），也可以实现这个效果，不用写代码移动布局，根节点需要加android:fitsSystemWindows="true"，Activity使用adjustResize。
 ```xml
 <ScrollView
     android:layout_width="match_parent"
