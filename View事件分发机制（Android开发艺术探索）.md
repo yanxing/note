@@ -7,7 +7,7 @@
 此方法不会被调用，返回结果表示是否拦截当前事件。
 #####public boolean onTouchEvent（MotionEvent ev）
 在dispatchTouchEvent方法中调用，用来处理点击事件，返回结果表示是否消耗当前事件，如果不消耗，
-则在同一事件序列中，当前View无法再次接受到事件。
+则在同一事件序列中，当前View无法再次接收到事件。
 <br>伪代码：
 ```java
   public boolean dispatchTouchEvent（MotionEvent ev）{
@@ -38,6 +38,5 @@
  （8）View的onTouchEvent默认都会消耗事件（返回true），除非它是不可以点击的（clickable和longClickable同时为false）。View的longClickable属性默认都为false，clickable属性要分情况，比如Button的clickable属性默认为true，而TextView的clickable属性默认为false。<p>
  （9）View的enable属性不影响onTouchEvent的默认返回值。哪怕一个View是disable状态的，只要它的clickable或者longClickable有一个为true，那么它的
  onTouchEvent就返回true。<p>
- （10）onClick会发生的前提是当前View是可点击的，并且它收到了down和up的事件。
- （11）事件传递过程是由外向内，即事件总是先传递给父元素，然后再由父元素分发给子View，通过requestDisallowInterceptTouchEvent方法可以在子元素中关于
- 干预父元素的事件分发过程，但是ACTION_DOWN事件除外。
+ （10）onClick会发生的前提是当前View是可点击的，并且它收到了down和up的事件。<p>
+ （11）事件传递过程是由外向内，即事件总是先传递给父元素，然后再由父元素分发给子View，通过requestDisallowInterceptTouchEvent方法可以在子元素中干预父元素的事件分发过程，但是ACTION_DOWN事件除外。
