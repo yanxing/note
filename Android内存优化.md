@@ -17,5 +17,5 @@ inJustDecodeBounds为true表示不为Bitmap分配内存空间，但是可以获�
 ##### 其他内存优化
 常量使用static final，少使用枚举；String变量拼接使用StringBuild（线程不安全，StringBuffer线程安全）；ViewPager+Fragment不缓存过多的Fragment，考虑到性能和节省流量，可延迟请求网络；不要在Application放过多的全局变量；HashMap若是int型的key，可以使用SparseArray代替，其他类型使用ArrayMap；ListView改用RecycleView；不能使用 ScrollView包裹ListView/GridView/ExpandableListVIew，这样会把ListView 的所有 Item 都加载到内存中，要消耗巨大的内存和cpu去绘制，推荐使用NestedScrollView。<p>
  ##### 参考
-  https://www.jianshu.com/p/ab0cf2697236<br>
-  https://www.cnblogs.com/matric/p/6942281.html?utm_source=itdadao&utm_medium=referral
+ https://www.jianshu.com/p/ab0cf2697236<br>
+ https://www.cnblogs.com/matric/p/6942281.html?utm_source=itdadao&utm_medium=referral
