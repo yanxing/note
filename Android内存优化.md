@@ -1,4 +1,4 @@
-内存优化的核心是使用最少的内存优化以前的业务逻辑
+内存优化的核心是使用最少的内存完成以前的业务逻辑
 #### 内存溢出
 Bitmap是内存大户，容易造成OOM，可以对图片进行压缩，BitmapFactory.Options的inSampleSize属性表示图片为原始图片的几分之几，
 inJustDecodeBounds为true表示不为Bitmap分配内存空间，但是可以获得图片宽高，这样可以动态设置inSampleSize的值，用过bitmap后及时
