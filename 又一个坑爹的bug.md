@@ -1,0 +1,2 @@
+app内webview做微信H5支付，oppo和魅族手机报商家参数错误，华为、小米正常，最后原因是oppo和魅族webview跳转过程中loadUrl(url,header)中的header会被重置
+，里面Referer就没有了，由于我代码中header是属性变量，没有重新put值，header size为0，缺乏Referer，微信就会提示那个错误。
